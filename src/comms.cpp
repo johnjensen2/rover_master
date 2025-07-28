@@ -3,12 +3,32 @@
 #include "comms.h"
 #include "logic.h"  // for dispatch
 #include <Arduino.h>
+#include "packet.h"
+#include "secrets.h"
 
 static uint8_t thisNodeID;
 
 static bool emergencyStop = false;
 
 
+static const uint8_t macSensor1[]    = MAC_SENSOR_1;
+static const uint8_t macSensor2[]    = MAC_SENSOR_2;
+static const uint8_t macRoverMain[]  = MAC_ROVER_MAIN;
+static const uint8_t macController[] = MAC_CONTROLLER;
+static const uint8_t macScreen[]     = MAC_SCREEN;
+static const uint8_t macD1Mini[]     = MAC_D1_MINI;
+
+const uint8_t* getMacForNode(uint8_t nodeID) {
+  switch (nodeID) {
+    case SENSOR_1:     return macSensor1;
+    case SENSOR_2:     return macSensor2;
+    case ROVER_MAIN:   return macRoverMain;
+    case CONTROLLER:   return macController;
+    case SCREEN:       return macScreen;
+    case D1_OVERRIDE:  return macD1Mini;
+    default:           return nullptr;
+  }
+}
 bool isEmergencyStopped() {
   return emergencyStop;
 }
@@ -87,4 +107,12 @@ void serialCommandLoop() {
       inputLine += c;
     }
   }
+}
+
+bool sendPacketToNode(uint8_t targetID, const RoverPacket& pkt) {
+  const uint8_t* mac = getMacForNode(targetID);
+  if (mac) {
+    return sendPacket(mac, pkt);
+  }
+  return false;
 }

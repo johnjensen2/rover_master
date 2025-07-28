@@ -9,9 +9,6 @@ Pins getDefaultPins(uint8_t nodeID) {
 
   switch (nodeID) {
     case OEM:
-      p.MOTOR1_IN1 = 2;
-      p.MOTOR1_IN2 = 3;
-      p.MOTOR1_EN = 4;
       p.TEMP_SENSOR_PIN = 5;
       p.LED_STATUS = 46;
       break;
@@ -46,6 +43,8 @@ Pins getDefaultPins(uint8_t nodeID) {
     case CONTROLLER:
       p.JOY1_X_PIN = 34; p.JOY1_Y_PIN = 35;
       p.JOY2_X_PIN = 32; p.JOY2_Y_PIN = 33;
+      p.JOY1_BTN_PIN = 36;  // Button for joystick 1
+      p.JOY2_BTN_PIN = 37;  // Button for joystick 2
       break;
 
     default:

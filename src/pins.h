@@ -11,9 +11,7 @@ struct Pins {
   int LED_STATUS = -1;
 
   // OEM
-  int MOTOR1_IN1 = -1;
-  int MOTOR1_IN2 = -1;
-  int MOTOR1_EN  = -1;
+
   int TEMP_SENSOR_PIN = -1;
 
   // Sensors
@@ -72,7 +70,9 @@ struct Pins {
   int JOY1_Y_PIN = -1;
   int JOY2_X_PIN = -1;
   int JOY2_Y_PIN = -1;
-
+  int JOY1_BTN_PIN = -1;
+  int JOY2_BTN_PIN = -1;
+  
   bool loadedFromFlash = false;  // Optional debug flag
 };
 

@@ -89,7 +89,7 @@ void loop() {
     case SENSOR_1: loop_sensor_1(); break;
     case SENSOR_2: loop_sensor_2(); break;
     case ROVER_MAIN: loop_rover_main(); break;
-    case CONTROLLER: loop_controller(); break;
+    case CONTROLLER: loop_controller(THIS_NODE_ID); break;
     case OEM: loop_oem(); break;
     default: loop_oem(); break;
     }

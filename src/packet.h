@@ -2,6 +2,8 @@
 
 #include <Arduino.h>
 
+#define PACKET_TYPE_CONTROL 0x01
+
 enum NodeID {
   SENSOR_1 = 1,
   SENSOR_2 = 2,
@@ -40,5 +42,5 @@ typedef struct __attribute__((packed)) {
   float data1;
   float data2;
   float data3;
-  uint8_t flags;
+  uint8_t type;
 } RoverPacket;
