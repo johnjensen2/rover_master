@@ -5,12 +5,13 @@
 enum NodeID {
   SENSOR_1 = 1,
   SENSOR_2 = 2,
- ROVER_MAIN  = 3,
-  CONTROLLER = 4,
-  DISPLAY_NODE = 5,
-  D1_OVERRIDE = 6,
-  BROADCAST = 255
-};
+  ROVER_MAIN  = 3,
+  CONTROLLER = 4,  
+  SCREEN = 5,
+  D1_OVERRIDE = 6,  // <-- Add this line
+  OEM = 99,  // new default/unknown mode
+  BROADCAST= 255
+  };
 
 
 enum MsgType {
